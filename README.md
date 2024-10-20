@@ -3,7 +3,8 @@
 Este é um projeto de exemplo utilizando **React Native**.
 
 ## Tecnologias Utilizadas
-- ![React Native](https://img.icons8.com/?size=100&id=123603&format=png&color=000000) React Native
+![React Native](https://img.icons8.com/?size=100&id=123603&format=png&color=000000)
+- React Native
 - JavaScript/TypeScript
 - Styled Components
 - Axios (ou outras bibliotecas que você esteja utilizando)
