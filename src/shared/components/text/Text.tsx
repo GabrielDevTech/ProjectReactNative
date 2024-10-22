@@ -11,17 +11,57 @@ interface TextProps extends TextPropsNative {
 }
 
 const Text = ({ type, color, ...props }: TextProps) => {
-    const handleFontSize = useMemo(() => {
+    const FontSize = useMemo(() => {
         switch (type) {
-            case textTypes.TITLE:
-                return '32px';
+            case textTypes.TITLE_BOLD:
+            case textTypes.TITLE_REGULAR:
+            case textTypes.TITLE_LIGTH:
+                return '24px';
+            case textTypes.BUTTON_BOLD:
+            case textTypes.BUTTON_REGULAR:
+            case textTypes.BUTTON_LIGTH:
+                return '18px';
+            case textTypes.SUB_TITLE_BOLD:
+            case textTypes.SUB_TITLE_REGULAR:
+            case textTypes.SUB_TITLE_LIGTH:
+                return '20px';
+            case textTypes.PARAGRAPH_SMALL_BOLD:
+            case textTypes.PARAGRAPH_SMALL_REGULAR:
+            case textTypes.PARAGRAPH_SMALL_LIGTH:
+                return '10px';
+            case textTypes.PARAGRAPH_BOLD:
+            case textTypes.PARAGRAPH_LIGTH:
+            case textTypes.PARAGRAPH_REGULAR:
             default:
-                return '16px'
+                return '14px';
         }
     }, [type]);
 
+    const fontFamily = useMemo(() => {
+        switch (type) {
+            case textTypes.TITLE_BOLD:
+            case textTypes.SUB_TITLE_BOLD:
+            case textTypes.PARAGRAPH_BOLD:
+            case textTypes.PARAGRAPH_SMALL_BOLD:
+            case textTypes.BUTTON_BOLD:
+                return 'Poppins-Bold'
+            case textTypes.TITLE_LIGTH:
+            case textTypes.SUB_TITLE_LIGTH:
+            case textTypes.PARAGRAPH_LIGTH:
+            case textTypes.PARAGRAPH_SMALL_LIGTH:
+            case textTypes.BUTTON_LIGTH:
+                return 'Poppins-Ligth'
+            case textTypes.TITLE_REGULAR:
+            case textTypes.SUB_TITLE_REGULAR:
+            case textTypes.PARAGRAPH_REGULAR:
+            case textTypes.PARAGRAPH_SMALL_REGULAR:
+            case textTypes.BUTTON_REGULAR:
+            default:
+                return 'Poppins-Regular'
+        }
+    }, [type])
 
-    return <ContainerText fontSize={handleFontSize} color={color} {...props} />
+    return <ContainerText fontFamily={fontFamily} fontSize={FontSize} color={color} {...props} />
 
 }
 
