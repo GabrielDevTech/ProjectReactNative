@@ -18,7 +18,7 @@ const Text = ({ type, color, ...props }: TextProps) => {
             default:
                 return '16px'
         }
-    }, []);
+    }, [type]);
 
 
     return <ContainerText fontSize={handleFontSize} color={color} {...props} />
