@@ -8,9 +8,10 @@ import { textTypes } from "../text/textTypes";
 
 interface InputProps extends TextInputProps {
     title?: string
+    errorMessage?: string
 }
 
-const Input = ({ title, ...props }: InputProps) => {
+const Input = ({ errorMessage, title, ...props }: InputProps) => {
     return (
         <DisplayFexCollumn>
             {title && (
@@ -20,7 +21,15 @@ const Input = ({ title, ...props }: InputProps) => {
                     {title}
                 </Text>
             )}
-            <ContainerInput {...props} />
+            <ContainerInput {...props} isError={!!errorMessage} />
+            {errorMessage && (
+                <Text
+                    margin="0px 0px 0px 8px"
+                    type={textTypes.PARAGRAPH_SMALL_SEMI_BOLD}
+                    color={theme.color.orangeTheme.orange80}>
+                    {errorMessage}
+                </Text>
+            )}
         </DisplayFexCollumn>
     );
 };
