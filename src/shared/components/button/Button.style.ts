@@ -12,6 +12,7 @@ export const ButtonContainer = styled.TouchableOpacity<ButtonContainerProps>`
     justify-content: center;
     align-items: center;
     ${(props) => props.margin ? `margin: ${props.margin};` : ''};
+    flex-direction: row;
 `
 export const GradientButton = styled(LinearGradient) <ButtonContainerProps>`
     width: 100%;
@@ -20,10 +21,18 @@ export const GradientButton = styled(LinearGradient) <ButtonContainerProps>`
     justify-content: center;
     align-items: center;
     ${(props) => props.margin ? `margin: ${props.margin};` : ''};
+    flex-direction: row;
 `
 export const ButtonSecondary = styled(ButtonContainer) <ButtonContainerProps>`
     ${(props) => props.margin ? `margin: ${props.margin};` : ''};
     background-color: transparent;
     border-width:1px;
     border-color: ${theme.color.mainTheme.primary};
+`
+export const ButtonDisable = styled(ButtonContainer) <ButtonContainerProps>`
+    background-color: ${theme.color.grayTheme.gray100};
+`
+
+export const ActivityIndicator = styled.ActivityIndicator`
+    margin-left: 8px;
 `
