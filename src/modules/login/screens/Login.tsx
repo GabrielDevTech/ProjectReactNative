@@ -15,8 +15,12 @@ const Login = () => {
     return (
         <View>
             <ContainerLogin>
-                <Input />
-                <Button type={theme.buttons.buttonsTheme.primary} margin='8px' onPress={handleOnPress} title="Entrar" />
+                <Input title="Email:" placeholder="Digite seu email" />
+                <Button
+                    type={theme.buttons.buttonsTheme.primary}
+                    margin='8px'
+                    onPress={handleOnPress}
+                    title="Entrar" />
             </ContainerLogin>
         </View>
     );

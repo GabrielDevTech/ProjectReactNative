@@ -7,10 +7,10 @@ import { ContainerText } from "./text.style";
 interface TextProps extends TextPropsNative {
     color?: string,
     type?: string,
-
+    margin?: string,
 }
 
-const Text = ({ type, color, ...props }: TextProps) => {
+const Text = ({ margin, type, color, ...props }: TextProps) => {
     const FontSize = useMemo(() => {
         switch (type) {
             case textTypes.TITLE_BOLD:
@@ -72,7 +72,12 @@ const Text = ({ type, color, ...props }: TextProps) => {
         }
     }, [type])
 
-    return <ContainerText fontFamily={fontFamily} fontSize={FontSize} color={color} {...props} />
+    return <ContainerText
+        customMargin={margin}
+        fontFamily={fontFamily}
+        fontSize={FontSize}
+        color={color}
+        {...props} />
 
 }
 
