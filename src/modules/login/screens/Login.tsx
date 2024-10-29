@@ -21,13 +21,15 @@ const Login = () => {
                 <Input
                     margin="0px 0px 16px 0px"
                     title="Email:"
+                    errorMessage="erro email"
                     placeholder="Digite seu email" />
+
                 <Input
                     title="Senha:"
                     placeholder="Digite sua senha"
                     secureTextEntry />
                 <Button
-                    type={theme.buttons.buttonsTheme.primary}
+                    type={theme.buttons.buttonsTheme.secondary}
                     margin='8px'
                     onPress={handleOnPress}
                     title="Entrar" />
