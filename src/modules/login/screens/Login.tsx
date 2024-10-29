@@ -21,7 +21,6 @@ const Login = () => {
                 <Input
                     margin="0px 0px 16px 0px"
                     title="Email:"
-                    errorMessage="erro email"
                     placeholder="Digite seu email" />
 
                 <Input
@@ -29,7 +28,7 @@ const Login = () => {
                     placeholder="Digite sua senha"
                     secureTextEntry />
                 <Button
-                    type={theme.buttons.buttonsTheme.secondary}
+                    type={theme.buttons.buttonsTheme.primary}
                     margin='8px'
                     onPress={handleOnPress}
                     title="Entrar" />
