@@ -1,6 +1,7 @@
-import axios from "axios";
+
 import { useState } from "react";
 import { NativeSyntheticEvent, TextInputChangeEventData } from "react-native";
+import { conectionAPIPost } from "../../../shared/functions/connection/connectionApi";
 
 export const useLogin = () => {
     const [email, setEmail] = useState<string>('');
@@ -10,7 +11,7 @@ export const useLogin = () => {
 
     const handleOnPress = async () => {
         setLoading(true);
-        await axios.post('http://192.168.0.104:8080/auth', {
+        await conectionAPIPost('http://192.168.0.104:8080/auth', {
             email,
             password,
         }).catch(() => {
