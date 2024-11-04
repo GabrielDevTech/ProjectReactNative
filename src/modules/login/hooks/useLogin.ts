@@ -1,31 +1,27 @@
 
+
 import { useState } from "react";
 import { NativeSyntheticEvent, TextInputChangeEventData } from "react-native";
-import { conectionAPIPost } from "../../../shared/functions/connection/connectionApi";
+import { useRequest } from "../../../shared/hooks/useRequest";
 
 export const useLogin = () => {
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
-    const [loading, setLoading] = useState<boolean>(false);
-    const [errorMessage, setErrorMessage] = useState<string>('');
+    const { authRequest, errorMessage, loading, setErrorMessage } = useRequest();
+
 
     const handleOnPress = async () => {
-        setLoading(true);
-        await conectionAPIPost('http://192.168.0.104:8080/auth', {
-            email,
-            password,
-        }).catch(() => {
-            setErrorMessage('Email ou senha inválidos.');
-        });
-        setLoading(false);
-        console.log('clicou')
+        await authRequest({ email, password });
+        console.log('clicou');
     }
 
     const handleOnchangeEmail = (event: NativeSyntheticEvent<TextInputChangeEventData>) => {
+        setErrorMessage('');
         setEmail(event.nativeEvent.text);
     };
 
     const handleOnchangePassword = (event: NativeSyntheticEvent<TextInputChangeEventData>) => {
+        setErrorMessage('');
         setPassword(event.nativeEvent.text);
     };
 
