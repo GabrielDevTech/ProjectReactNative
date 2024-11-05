@@ -2,12 +2,10 @@ import { useState } from "react"
 import { requestLogin } from "../types/requestLogin";
 import { conectionAPIPost } from "../functions/connection/connectionApi";
 import { ReturnLogin } from "../types/returnLogin";
-
-import { useDispatch } from "react-redux";
-import { setUserAction } from "../../store/reducers/userReducer";
+import { useUserReducer } from "../../store/reducers/userReducer/useUserReducer";
 
 export const useRequest = () => {
-    const dispatch = useDispatch();
+    const { setUser } = useUserReducer();
     const [loading, setLoading] = useState<boolean>(false);
     const [errorMessage, setErrorMessage] = useState<string>('');
 
@@ -18,7 +16,7 @@ export const useRequest = () => {
         await conectionAPIPost<ReturnLogin>('http://192.168.0.104:8080/auth', body)
             .then((result) => {
                 if (result?.user) {
-                    dispatch(setUserAction(result.user));
+                    setUser(result.user);
                 }
             })
             .catch((error) => {

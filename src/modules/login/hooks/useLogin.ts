@@ -3,11 +3,10 @@
 import { useState } from "react";
 import { NativeSyntheticEvent, TextInputChangeEventData } from "react-native";
 import { useRequest } from "../../../shared/hooks/useRequest";
-import { RootState } from "../../../store";
-import { useSelector } from "react-redux";
+import { useUserReducer } from "../../../store/reducers/userReducer/useUserReducer";
 
 export const useLogin = () => {
-    const { user } = useSelector((state: RootState) => state.userReducer);
+    const { user } = useUserReducer();
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const { authRequest, errorMessage, loading, setErrorMessage } = useRequest();
