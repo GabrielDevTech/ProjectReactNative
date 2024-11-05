@@ -5,6 +5,7 @@ import { MethodEnum } from "../../../enums/method.enum";
 export type MethodType = 'get' | 'delete' | 'post' | 'put' | 'patch';
 
 export default class ConnectionApi {
+
     static async call<T>(url: string, method: MethodType, body?: unknown): Promise<T> {
         const config: AxiosRequestConfig<unknown> = {
             method,
