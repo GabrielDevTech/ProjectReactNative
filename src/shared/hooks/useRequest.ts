@@ -3,8 +3,10 @@ import { requestLogin } from "../types/requestLogin";
 import { conectionAPIPost } from "../functions/connection/connectionApi";
 import { ReturnLogin } from "../types/returnLogin";
 import { useUserReducer } from "../../store/reducers/userReducer/useUserReducer";
+import { useGlobalReducer } from "../../store/reducers/globalReducer/useGlobalReducer";
 
 export const useRequest = () => {
+    const { setModal } = useGlobalReducer();
     const { setUser } = useUserReducer();
     const [loading, setLoading] = useState<boolean>(false);
     const [errorMessage, setErrorMessage] = useState<string>('');
@@ -20,8 +22,12 @@ export const useRequest = () => {
                 }
             })
             .catch((error) => {
-                console.error(error)
-                setErrorMessage('Email ou senha inválidos.');
+                console.log(error)
+                setModal({
+                    visible: true,
+                    title: 'Erro',
+                    text: 'Email ou senha invalídos.',
+                });
             });
         setLoading(false);
         console.log('clicou')
