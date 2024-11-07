@@ -12,7 +12,7 @@ import { View } from "react-native";
 
 
 const Login = () => {
-
+    console.log("Login component rendered");
     const {
         email,
         password,

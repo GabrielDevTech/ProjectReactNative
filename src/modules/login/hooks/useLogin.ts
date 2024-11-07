@@ -13,7 +13,6 @@ export const useLogin = () => {
 
     console.log('user', user)
     const handleOnPress = async () => {
-
         await authRequest({ email, password });
         console.log('clicou');
     }

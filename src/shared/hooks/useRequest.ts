@@ -4,8 +4,10 @@ import { conectionAPIPost } from "../functions/connection/connectionApi";
 import { ReturnLogin } from "../types/returnLogin";
 import { useUserReducer } from "../../store/reducers/userReducer/useUserReducer";
 import { useGlobalReducer } from "../../store/reducers/globalReducer/useGlobalReducer";
+import { NavigationProp, ParamListBase, useNavigation } from "@react-navigation/native";
 
 export const useRequest = () => {
+    const navigation = useNavigation<NavigationProp<ParamListBase>>();
     const { setModal } = useGlobalReducer();
     const { setUser } = useUserReducer();
     const [loading, setLoading] = useState<boolean>(false);
@@ -19,7 +21,9 @@ export const useRequest = () => {
             .then((result) => {
                 if (result?.user) {
                     setUser(result.user);
+                    navigation.navigate('Home');
                 }
+
             })
             .catch((error) => {
                 console.log(error)
