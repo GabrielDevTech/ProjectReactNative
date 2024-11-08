@@ -5,6 +5,7 @@ import { ReturnLogin } from "../types/returnLogin";
 import { useUserReducer } from "../../store/reducers/userReducer/useUserReducer";
 import { useGlobalReducer } from "../../store/reducers/globalReducer/useGlobalReducer";
 import { NavigationProp, ParamListBase, useNavigation } from "@react-navigation/native";
+import { menuUrl } from "../enums/menuUrl.enum";
 
 export const useRequest = () => {
     const navigation = useNavigation<NavigationProp<ParamListBase>>();
@@ -21,7 +22,10 @@ export const useRequest = () => {
             .then((result) => {
                 if (result?.user) {
                     setUser(result.user);
-                    navigation.navigate('Home');
+                    navigation.reset({
+                        index: 0,
+                        routes: [{ name: menuUrl.HOME }]
+                    });
                 }
 
             })
